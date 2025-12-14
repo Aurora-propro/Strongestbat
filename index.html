@@ -4,73 +4,134 @@
   <meta charset="UTF-8">
   <title>Strongest Bat Wiki</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Strongest Bat (Currently Mediocre Crickets) Wiki – records of members and events.">
-  <link rel="stylesheet" href="style.css">
-</head>
-<body>
-  <header class="hero">
-    <div class="container">
-      <h1>Strongest Bat Wiki</h1>
-      <h2>Currently Mediocre Crickets</h2>
-      <p class="tagline">"Minors minors I bust in minors"</p>
-      <p class="quote-author">– Jameson, 23/12/2024</p>
-    </div>
-  </header>
+  <meta name="description" content="Strongest Bat (Currently Strongest Crickets) Wiki – records of members and events.">
 
-  <main class="container">
-    <section class="card">
-      <h3>Current Members – 10 <span class="meta">(as of 18/11/2025)</span></h3>
-      <ul class="members">
-        <li>Horace</li>
-        <li>Jameson</li>
-        <li>Scout</li>
-        <li>Ryan</li>
-        <li>Jayden Ng</li>
-        <li>Colby</li>
-        <li>Evander</li>
-        <li>Jarvis</li>
-        <li>Neel</li>
-        <li>Alex</li>
-      </ul>
-    </section>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
 
-    <section class="card">
-      <h3>About The Wiki</h3>
-      <p>
-        Welcome to the Strongest Bat (Currently Mediocre Crickets) Wiki! This site keeps a record
-        of every member added and removed, along with incidents and events since the creation of
-        this friend group.
-      </p>
-      <p>
-        Not every piece of information is listed here. If you have suggestions or things to add,
-        message the wiki editors.
-      </p>
-    </section>
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: #0f172a;
+      color: #e5e7eb;
+      line-height: 1.6;
+    }
 
-    <section class="card">
-      <h3>Wiki Editors</h3>
-      <p>
-        Horace (Lead), Jameson (Assistant), Jarvis (Assistant assistant),
-        Brendan (Refining), Jayden (Member Cataloging).
-      </p>
-    </section>
+    a {
+      color: #38bdf8;
+      text-decoration: none;
+    }
 
-    <section class="card note">
-      <p>
-        This website is made for entertainment. Do not take things seriously.
-      </p>
-      <p class="meta">
-        Last updated: 20/11/2025 · Version 5.7.5
-      </p>
-    </section>
-  </main>
+    a:hover {
+      text-decoration: underline;
+    }
 
-  <footer>
-    <div class="container">
-      <p>Strongest Bat Wiki · GitHub Edition</p>
-    </div>
-  </footer>
-</body>
-</html>
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 1.5rem;
+    }
 
+    .hero {
+      background: radial-gradient(circle at top, #1e293b 0, #020617 60%);
+      border-bottom: 1px solid #1f2937;
+      text-align: center;
+      padding: 3.5rem 1.5rem 2.5rem;
+    }
 
+    /* Top navigation bar */
+    .top-nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 1.8rem;
+    }
+
+    .logo-mark {
+      width: 36px;
+      height: 36px;
+      border-radius: 999px;
+      border: 2px solid #38bdf8;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: 0.9rem;
+      color: #e5e7eb;
+      background: rgba(15, 23, 42, 0.9);
+      box-shadow: 0 0 25px rgba(56, 189, 248, 0.45);
+      animation: pulse-glow 2.4s ease-in-out infinite;
+    }
+
+    .nav-links {
+      list-style: none;
+      display: flex;
+      gap: 0.9rem;
+    }
+
+    .nav-link {
+      font-size: 0.95rem;
+      padding: 0.35rem 0.8rem;
+      border-radius: 999px;
+      border: 1px solid transparent;
+      color: #cbd5f5;
+      cursor: default;
+      opacity: 0.8;
+      transition:
+        background 0.25s ease,
+        border-color 0.25s ease,
+        transform 0.2s ease,
+        opacity 0.25s ease;
+    }
+
+    .nav-link:hover {
+      background: rgba(15, 23, 42, 0.9);
+      border-color: #1d4ed8;
+      opacity: 1;
+      transform: translateY(-1px);
+    }
+
+    .nav-link.active {
+      background: #1d4ed8;
+      border-color: #1d4ed8;
+      color: #f9fafb;
+      opacity: 1;
+    }
+
+    .hero h1 {
+      font-size: 2.5rem;
+      letter-spacing: 0.05em;
+    }
+
+    .hero h2 {
+      margin-top: 0.3rem;
+      font-size: 1.1rem;
+      font-weight: 400;
+      color: #9ca3af;
+    }
+
+    .tagline {
+      margin-top: 1.5rem;
+      font-size: 1.1rem;
+      font-style: italic;
+      color: #e5e7eb;
+    }
+
+    .quote-author {
+      margin-top: 0.3rem;
+      font-size: 0.9rem;
+      color: #9ca3af;
+    }
+
+    main {
+      margin-top: -1.5rem;
+      padding-bottom: 3rem;
+    }
+
+    .card {
+      background: rgba(15, 23, 42, 0.9);
+      border: 1px solid #1f2937;
+      border-radius
