@@ -1,139 +1,57 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
   <title>Strongest Bat Wiki</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Strongest Bat (Currently Strongest Crickets) Wiki – records of 290
-    s and events.">
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Strongest Bat (Currently Strongest Crickets) Wiki – records of 290s and events." />
   <style>
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
+    /* Base reset */
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
     body {
       font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
       background: #0f172a;
       color: #e5e7eb;
       line-height: 1.6;
     }
-    a {
-      color: #38bdf8;
-      text-decoration: none;
-    }
-    a:hover {
-      text-decoration: underline;
-    }
-    .container {
-      max-width: 900px;
-      margin: 0 auto;
-      padding: 1.5rem;
-    }
+    a { color: #38bdf8; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    .container { max-width: 900px; margin: 0 auto; padding: 1.5rem; }
+
+    /* Hero + Nav */
     .hero {
       background: radial-gradient(circle at top, #1e293b 0, #020617 60%);
       border-bottom: 1px solid #1f2937;
       text-align: center;
       padding: 3.5rem 1.5rem 2.5rem;
+      position: relative;
+      z-index: 0;
     }
+
     .top-nav {
       display: flex;
       align-items: center;
       justify-content: space-between;
       margin-bottom: 1.8rem;
+      position: relative;
+      z-index: 10; /* ensure above hero content */
     }
+
     .logo-mark {
-      width: 36px;
-      height: 36px;
-      border-radius: 999px;
-      border: 2px solid #38bdf8;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-weight: 700;
-      font-size: 0.9rem;
-      color: #e5e7eb;
+      width: 36px; height: 36px; border-radius: 999px; border: 2px solid #38bdf8;
+      display: flex; align-items: center; justify-content: center;
+      font-weight: 700; font-size: 0.9rem; color: #e5e7eb;
       background: rgba(15, 23, 42, 0.9);
       box-shadow: 0 0 25px rgba(56, 189, 248, 0.45);
       animation: pulse-glow 2.4s ease-in-out infinite;
     }
-    .nav-links {
-      list-style: none;
-      display: flex;
-      gap: 0.9rem;
-    }
-     .dropdown-btn {
-    background: none;
-    border: none;
-    color: inherit;
-    cursor: pointer;
-    font-size: inherit;
-    padding: 0;
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    width: 100%;
-  }
-  .dropdown-btn:hover {
-    color: #38bdf8;
-  }
-  .dropdown-menu {
-    display: none;
-    position: absolute;
-    background: rgba(15, 23, 42, 0.95);
-    border: 1px solid #1f2937;
-    border-radius: 0.5rem;
-    min-width: 300px;
-    list-style: none;
-    margin-top: 0.5rem;
-    max-height: 600px;
-    overflow-y: auto;
-  }
-  .nav-link:has(.dropdown-btn):hover .dropdown-menu {
-    display: block;
-  }
-  .member-item {
-    padding: 1rem;
-    border-bottom: 1px solid #1f2937;
-    display: flex;
-    flex-direction: column;
-    gap: 0.25rem;
-  }
-  .member-item:last-child {
-    border-bottom: none;
-  }
-  .member-image {
-    width: 60px;
-    height: 60px;
-    border-radius: 0.5rem;
-    background: #1f2937;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-bottom: 0.5rem;
-    overflow: hidden;
-  }
-  .member-image img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-  }
-  .member-item h4 {
-    font-size: 1rem;
-    color: #f9fafb;
-    margin: 0;
-  }
-  .member-item .role {
-    font-size: 0.85rem;
-    color: #9ca3af;
-    margin: 0;
-  }
-  .member-item .song {
-    font-size: 0.8rem;
-    color: #38bdf8;
-    margin: 0;
-  }
+
+    .nav-links { list-style: none; display: flex; gap: 0.9rem; align-items: center; }
+
     .nav-link {
+      position: relative;
       font-size: 0.95rem;
       padding: 0.35rem 0.8rem;
       border-radius: 999px;
@@ -141,49 +59,54 @@
       color: #cbd5f5;
       cursor: default;
       opacity: 0.8;
-      transition:
-        background 0.25s ease,
-        border-color 0.25s ease,
-        transform 0.2s ease,
-        opacity 0.25s ease;
+      transition: background 0.25s ease, border-color 0.25s ease, transform 0.2s ease, opacity 0.25s ease;
     }
-    .nav-link:hover {
-      background: rgba(15, 23, 42, 0.9);
-      border-color: #1d4ed8;
-      opacity: 1;
-      transform: translateY(-1px);
+    .nav-link:hover { background: rgba(15, 23, 42, 0.9); border-color: #1d4ed8; opacity: 1; transform: translateY(-1px); }
+    .nav-link.active { background: #1d4ed8; border-color: #1d4ed8; color: #f9fafb; opacity: 1; }
+
+    /* Dropdown */
+    .dropdown {
+      position: relative;
     }
-    .nav-link.active {
-      background: #1d4ed8;
-      border-color: #1d4ed8;
-      color: #f9fafb;
-      opacity: 1;
+    .dropdown-btn {
+      background: none; border: none; color: inherit; cursor: pointer; font-size: inherit;
+      padding: 0.35rem 0.8rem; display: flex; align-items: center; gap: 0.5rem; border-radius: 999px;
     }
-    .hero h1 {
-      font-size: 2.5rem;
-      letter-spacing: 0.05em;
+    .dropdown-btn:hover { color: #38bdf8; }
+    .dropdown-menu {
+      display: none;
+      position: absolute;
+      right: 0; top: 115%;
+      background: rgba(15, 23, 42, 0.97);
+      border: 1px solid #1f2937;
+      border-radius: 0.6rem;
+      min-width: 260px;
+      max-height: 70vh;
+      overflow-y: auto;
+      list-style: none;
+      padding: 0.4rem;
+      box-shadow: 0 14px 36px rgba(0,0,0,0.5);
+      z-index: 9999; /* always on top */
     }
-    .hero h2 {
-      margin-top: 0.3rem;
-      font-size: 1.1rem;
-      font-weight: 400;
-      color: #9ca3af;
-    }
-    .tagline {
-      margin-top: 1.5rem;
-      font-size: 1.1rem;
-      font-style: italic;
+    .dropdown.open .dropdown-menu { display: block; }
+
+    .dropdown-item {
+      display: block;
+      padding: 0.6rem 0.75rem;
       color: #e5e7eb;
+      border-radius: 0.45rem;
+      transition: background 0.2s ease, color 0.2s ease;
+      white-space: nowrap;
     }
-    .quote-author {
-      margin-top: 0.3rem;
-      font-size: 0.9rem;
-      color: #9ca3af;
-    }
-    main {
-      margin-top: -1.5rem;
-      padding-bottom: 3rem;
-    }
+    .dropdown-item:hover { background: #0b1223; color: #fff; text-decoration: none; }
+
+    .hero h1 { font-size: 2.5rem; letter-spacing: 0.05em; }
+    .hero h2 { margin-top: 0.3rem; font-size: 1.1rem; font-weight: 400; color: #9ca3af; }
+    .tagline { margin-top: 1.5rem; font-size: 1.1rem; font-style: italic; color: #e5e7eb; }
+    .quote-author { margin-top: 0.3rem; font-size: 0.9rem; color: #9ca3af; }
+
+    main { margin-top: -1.5rem; padding-bottom: 3rem; }
+
     .card {
       background: rgba(15, 23, 42, 0.9);
       border: 1px solid #1f2937;
@@ -191,33 +114,22 @@
       padding: 1.5rem 1.6rem;
       margin-top: 1.4rem;
       box-shadow: 0 18px 45px rgba(0, 0, 0, 0.55);
-      opacity: 0;
-      transform: translateY(12px);
+      opacity: 0; transform: translateY(12px);
       animation: card-in 0.6s ease-out forwards;
     }
     .card:nth-of-type(1) { animation-delay: 0.05s; }
     .card:nth-of-type(2) { animation-delay: 0.15s; }
     .card:nth-of-type(3) { animation-delay: 0.25s; }
     .card:nth-of-type(4) { animation-delay: 0.35s; }
-    .card h3 {
-      font-size: 1.3rem;
-      margin-bottom: 0.6rem;
-      color: #f9fafb;
-    }
-    .card p {
-      margin-top: 0.3rem;
-      color: #d1d5db;
-    }
-    .meta {
-      font-size: 0.85rem;
-      color: #9ca3af;
-    }
+
+    .card h3 { font-size: 1.3rem; margin-bottom: 0.6rem; color: #f9fafb; }
+    .card p { margin-top: 0.3rem; color: #d1d5db; }
+
+    .meta { font-size: 0.85rem; color: #9ca3af; }
 
     .members {
-      list-style: none;
-      margin-top: 0.6rem;
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+      list-style: none; margin-top: 0.6rem;
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
       gap: 0.3rem 0.75rem;
     }
     .members li {
@@ -227,39 +139,6 @@
       border: 1px solid #111827;
     }
 
-    .member {
-      position: relative;
-      cursor: default;
-    }
-    .member::after {
-      content: attr(data-desc);
-      position: absolute;
-      left: 50%;
-      bottom: 110%;
-      transform: translateX(-50%);
-      background: #020617;
-      color: #e5e7eb;
-      padding: 0.35rem 0.6rem;
-      border-radius: 0.4rem;
-      border: 1px solid #1f2937;
-      font-size: 0.75rem;
-      white-space: normal;
-      max-width: 220px;
-      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
-      opacity: 0;
-      pointer-events: none;
-      transition: opacity 0.18s ease;
-      z-index: 10;
-    }
-    .member:hover::after {
-      opacity: 1;
-    }
-
-    .card.note {
-      border-style: dashed;
-      border-color: #334155;
-      background: rgba(15, 23, 42, 0.9);
-    }
     footer {
       border-top: 1px solid #1f2937;
       padding: 1.2rem 0 1.5rem;
@@ -268,205 +147,72 @@
       color: #6b7280;
       background: #020617;
     }
-    .hero h1,
-    .hero h2,
-    .hero .tagline,
-    .hero .quote-author {
-      opacity: 0;
-      transform: translateY(10px);
-      animation: hero-fade 0.7s ease-out forwards;
+
+    /* Animations */
+    .hero h1, .hero h2, .hero .tagline, .hero .quote-author {
+      opacity: 0; transform: translateY(10px); animation: hero-fade 0.7s ease-out forwards;
     }
     .hero h1 { animation-delay: 0.05s; }
     .hero h2 { animation-delay: 0.16s; }
     .hero .tagline { animation-delay: 0.27s; }
     .hero .quote-author { animation-delay: 0.38s; }
+
     @keyframes pulse-glow {
-      0%, 100% {
-        box-shadow: 0 0 18px rgba(56, 189, 248, 0.35);
-        transform: scale(1);
-      }
-      50% {
-        box-shadow: 0 0 30px rgba(56, 189, 248, 0.65);
-        transform: scale(1.04);
-      }
+      0%, 100% { box-shadow: 0 0 18px rgba(56, 189, 248, 0.35); transform: scale(1); }
+      50% { box-shadow: 0 0 30px rgba(56, 189, 248, 0.65); transform: scale(1.04); }
     }
     @keyframes card-in {
-      0% {
-        opacity: 0;
-        transform: translateY(14px);
-      }
-      100% {
-        opacity: 1;
-        transform: translateY(0);
-      }
+      0% { opacity: 0; transform: translateY(14px); }
+      100% { opacity: 1; transform: translateY(0); }
     }
     @keyframes hero-fade {
-      0% {
-        opacity: 0;
-        transform: translateY(10px);
-      }
-      100% {
-        opacity: 1;
-        transform: translateY(0);
-      }
+      0% { opacity: 0; transform: translateY(10px); }
+      100% { opacity: 1; transform: translateY(0); }
     }
+
+    /* Mobile adjustments */
     @media (max-width: 640px) {
-      .hero {
-        padding: 2.5rem 1.2rem 1.8rem;
-      }
-      .hero h1 {
-        font-size: 2rem;
-      }
-      .card {
-        padding: 1.3rem 1.2rem;
-      }
-      .top-nav {
-        flex-direction: row;
-        justify-content: space-between;
-        gap: 0.8rem;
-      }
-      .nav-links {
-        gap: 0.5rem;
-      }
-      .nav-link {
-        font-size: 0.8rem;
-        padding: 0.25rem 0.6rem;
-      }
-        .members-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 1.5rem;
-    margin-top: 1rem;
-  }
-
-  .member-profile {
-    border: 1px solid #1f2937;
-    border-radius: 0.5rem;
-    padding: 1.5rem;
-    text-align: center;
-    background: rgba(15, 23, 42, 0.5);
-    transition: all 0.3s ease;
-  }
-
-  .member-profile:hover {
-    background: rgba(15, 23, 42, 0.8);
-    border-color: #38bdf8;
-    transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(56, 189, 248, 0.15);
-  }
-
-  .member-image {
-    width: 150px;
-    height: 150px;
-    border-radius: 50%;
-    object-fit: cover;
-    margin: 0 auto 1rem;
-    border: 2px solid #38bdf8;
-  }
-
-  .member-profile h4 {
-    font-size: 1.2rem;
-    margin: 0.5rem 0;
-    color: #e5e7eb;
-  }
-
-  .member-profile .role {
-    color: #38bdf8;
-    font-size: 0.9rem;
-    margin: 0.5rem 0;
-    font-weight: 600;
-  }
-
-  .member-profile .description {
-    font-size: 0.85rem;
-    color: #d1d5db;
-    margin: 0.8rem 0;
-    line-height: 1.5;
-  }
-
-  .member-profile .song {
-    font-size: 0.85rem;
-    color: #a0aec0;
-    margin-top: 1rem;
-    padding-top: 1rem;
-    border-top: 1px solid #1f2937;
-  }
+      .hero { padding: 2.5rem 1.2rem 1.8rem; }
+      .hero h1 { font-size: 2rem; }
+      .card { padding: 1.3rem 1.2rem; }
+      .top-nav { flex-direction: row; justify-content: space-between; gap: 0.8rem; }
+      .nav-links { gap: 0.5rem; }
+      .nav-link { font-size: 0.8rem; padding: 0.25rem 0.6rem; }
+      .dropdown-menu { left: 0; right: auto; min-width: 220px; }
     }
   </style>
 </head>
 <body>
   <header class="hero">
     <div class="container">
-      <nav class="top-nav">
-        <div class="logo-mark">SB</div>
+      <nav class="top-nav" aria-label="Main">
+        <div class="logo-mark" aria-label="Strongest Bat logo">SB</div>
         <ul class="nav-links">
           <li class="nav-link active">Home</li>
-            <li class="nav-link"><button class="dropdown-btn">Member profiles ▼</button>
-<ul class="dropdown-menu">
-                <li class="member-item">
-                  <div class="member-image"><img src="" alt="Horace" /></div>
-                  <h4>Horace</h4>
-                  <p class="role">Leader and Creator</p>
-                  <p class="song">🎵 "Believer" - Imagine Dragons</p>
-                </li>
-                <li class="member-item">
-                  <div class="member-image"><img src="" alt="Jameson" /></div>
-                  <h4>Jameson</h4>
-                  <p class="role">Assistant Editor</p>
-                  <p class="song">🎵 "Levitating" - Dua Lipa</p>
-                </li>
-                <li class="member-item">
-                  <div class="member-image"><img src="" alt="Scout" /></div>
-                  <h4>Scout</h4>
-                  <p class="role">Active Participant</p>
-                  <p class="song">🎵 "Don't Stop Me Now" - Queen</p>
-                </li>
-                <li class="member-item">
-                  <div class="member-image"><img src="" alt="Ryan" /></div>
-                  <h4>Ryan</h4>
-                  <p class="role">Original Member</p>
-                  <p class="song">🎵 "Take Me Home, Country Roads" - John Denver</p>
-                </li>
-                <li class="member-item">
-                  <div class="member-image"><img src="" alt="Jayden NG" /></div>
-                  <h4>Jayden NG</h4>
-                  <p class="role">Close Friend</p>
-                  <p class="song">🎵 "Walking on Sunshine" - Katrina & The Waves</p>
-                </li>
-                <li class="member-item">
-                  <div class="member-image"><img src="" alt="Colby" /></div>
-                  <h4>Colby</h4>
-                  <p class="role">Chat Enthusiast</p>
-                  <p class="song">🎵 "Good as Hell" - Lizzo</p>
-                </li>
-                <li class="member-item">
-                  <div class="member-image"><img src="" alt="Evander" /></div>
-                  <h4>Evander</h4>
-                  <p class="role">Recording Regular</p>
-                  <p class="song">🎵 "Shut Up and Dance" - Walk the Moon</p>
-                </li>
-                <li class="member-item">
-                  <div class="member-image"><img src="" alt="Jarvis" /></div>
-                  <h4>Jarvis</h4>
-                  <p class="role">Wiki Contributor</p>
-                  <p class="song">🎵 "Wonderful" - Gary Go</p>
-                </li>
-                <li class="member-item">
-                  <div class="member-image"><img src="" alt="Noel" /></div>
-                  <h4>Noel</h4>
-                  <p class="role">Project Specialist</p>
-                  <p class="song">🎵 "Reach for the Sky" - RAF Red Arrows</p>
-                </li>
-                <li class="member-item">
-                  <div class="member-image"><img src="" alt="Alex" /></div>
-                  <h4>Alex</h4>
-                  <p class="role">Newest Member</p>
-                  <p class="song">🎵 "New Beginnings" - Ólafur Arnalds</p>
-                </li>
-              </ul>
-            </li>          <li class="nav-link">Other</li>
+
+          <!-- CLICKABLE DROPDOWN: Member profiles -->
+          <li class="nav-link dropdown" id="profilesDropdown">
+            <button class="dropdown-btn" aria-haspopup="true" aria-expanded="false" aria-controls="profilesMenu">
+              Member profiles ▼
+            </button>
+            <ul class="dropdown-menu" id="profilesMenu" role="menu">
+              <li><a class="dropdown-item" href="horace.html" role="menuitem">Horace</a></li>
+              <li><a class="dropdown-item" href="jayden-ng.html" role="menuitem">Jayden Ng</a></li>
+              <li><a class="dropdown-item" href="jameson.html" role="menuitem">Jameson</a></li>
+              <li><a class="dropdown-item" href="jarvis.html" role="menuitem">Jarvis</a></li>
+              <li><a class="dropdown-item" href="evander.html" role="menuitem">Evander</a></li>
+              <li><a class="dropdown-item" href="alex.html" role="menuitem">Alex</a></li>
+              <li><a class="dropdown-item" href="neel.html" role="menuitem">Neel</a></li>
+              <li><a class="dropdown-item" href="ronny.html" role="menuitem">Ronny</a></li>
+              <li><a class="dropdown-item" href="scout.html" role="menuitem">Scout</a></li>
+              <li><a class="dropdown-item" href="colby.html" role="menuitem">Colby</a></li>
+            </ul>
+          </li>
+
+          <li class="nav-link">Other</li>
         </ul>
       </nav>
+
       <h1>Strongest Bat Wiki</h1>
       <h2>Currently Strongest Crickets</h2>
       <p class="tagline">"Minors minors I bust in minors"</p>
@@ -513,12 +259,8 @@
     </section>
 
     <section class="card note">
-      <p>
-        This website is made for entertainment. Do not take things seriously.
-      </p>
-      <p class="meta">
-        Last updated: 20/11/2025 · Version 5.7.5
-      </p>
+      <p>This website is made for entertainment. Do not take things seriously.</p>
+      <p class="meta">Last updated: 20/11/2025 · Version 5.7.5</p>
     </section>
   </main>
 
@@ -527,119 +269,41 @@
       <p>Strongest Bat Wiki · GitHub Edition</p>
     </div>
   </footer>
+
+  <script>
+    // Dropdown toggle logic (click to open/close, click outside to close, Esc to close)
+    (function () {
+      const dropdown = document.getElementById('profilesDropdown');
+      const btn = dropdown.querySelector('.dropdown-btn');
+      const menu = document.getElementById('profilesMenu');
+
+      function openMenu() {
+        dropdown.classList.add('open');
+        btn.setAttribute('aria-expanded', 'true');
+      }
+      function closeMenu() {
+        dropdown.classList.remove('open');
+        btn.setAttribute('aria-expanded', 'false');
+      }
+      function toggleMenu() {
+        if (dropdown.classList.contains('open')) { closeMenu(); } else { openMenu(); }
+      }
+
+      btn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        toggleMenu();
+      });
+
+      document.addEventListener('click', (e) => {
+        if (!dropdown.contains(e.target)) {
+          closeMenu();
+        }
+      });
+
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') closeMenu();
+      });
+    })();
+  </script>
 </body>
-  
-<section class="card">
-  <h3>Member Profiles</h3>
-  <div class="members-grid">
-    <!-- Horace Profile -->
-    <div class="member-profile">
-      <img src="https://via.placeholder.com/150?text=Horace" alt="Horace" class="member-image">
-      <h4>Horace</h4>
-      <p class="role">Leader and Creator</p>
-      <p class="description">Runs the wiki and recordings. The visionary who brought the Strongest Bat together.</p>
-      <p class="song"><strong>Defining Song:</strong> "Believer" - Imagine Dragons</p>
-    </div>
-
-    <!-- Jameson Profile -->
-    <div class="member-profile">
-      <img src="https://via.placeholder.com/150?text=Jameson" alt="Jameson" class="member-image">
-      <h4>Jameson</h4>
-      <p class="role">Assistant Editor</p>
-      <p class="description">Key member in events and operations. Works alongside Horace to keep everything running smoothly.</p>
-      <p class="song"><strong>Defining Song:</strong> "Levitating" - Dua Lipa</p>
-    </div>
-
-    <!-- Scout Profile -->
-    <div class="member-profile">
-      <img src="https://via.placeholder.com/150?text=Scout" alt="Scout" class="member-image">
-      <h4>Scout</h4>
-      <p class="role">Active Participant</p>
-      <p class="description">Often present in calls and important moments. A reliable voice in group discussions.</p>
-      <p class="song"><strong>Defining Song:</strong> "Don't Stop Me Now" - Queen</p>
-    </div>
-
-    <!-- Ryan Profile -->
-    <div class="member-profile">
-      <img src="https://via.placeholder.com/150?text=Ryan" alt="Ryan" class="member-image">
-      <h4>Ryan</h4>
-      <p class="role">Original Member</p>
-      <p class="description">Part of the early Strongest Bat era. A founding pillar of the community.</p>
-      <p class="song"><strong>Defining Song:</strong> "Take Me Home, Country Roads" - John Denver</p>
-    </div>
-
-    <!-- Jayden Ng Profile -->
-    <div class="member-profile">
-      <img src="https://via.placeholder.com/150?text=Jayden+Ng" alt="Jayden Ng" class="member-image">
-      <h4>Jayden Ng</h4>
-      <p class="role">Close Friend</p>
-      <p class="description">In the group since 2021. Known for strong bonds with other members.</p>
-      <p class="song"><strong>Defining Song:</strong> "Walking on Sunshine" - Katrina & The Waves</p>
-    </div>
-
-    <!-- Colby Profile -->
-    <div class="member-profile">
-      <img src="https://via.placeholder.com/150?text=Colby" alt="Colby" class="member-image">
-      <h4>Colby</h4>
-      <p class="role">Chat Enthusiast</p>
-      <p class="description">Active in chats, games, and streams. Always present when it matters most.</p>
-      <p class="song"><strong>Defining Song:</strong> "Good as Hell" - Lizzo</p>
-    </div>
-
-    <!-- Evander Profile -->
-    <div class="member-profile">
-      <img src="https://via.placeholder.com/150?text=Evander" alt="Evander" class="member-image">
-      <h4>Evander</h4>
-      <p class="role">Recording Regular</p>
-      <p class="description">Frequently appears in recordings and clips. A consistent voice in the community.</p>
-      <p class="song"><strong>Defining Song:</strong> "Shut Up and Dance" - Walk the Moon</p>
-    </div>
-
-    <!-- Jarvis Profile -->
-    <div class="member-profile">
-      <img src="https://via.placeholder.com/150?text=Jarvis" alt="Jarvis" class="member-image">
-      <h4>Jarvis</h4>
-      <p class="role">Wiki Contributor</p>
-      <p class="description">Helps with wiki maintenance, ideas, and organization. The backbone of our documentation.</p>
-      <p class="song"><strong>Defining Song:</strong> "Wonderful" - Gary Go</p>
-    </div>
-
-    <!-- Noel Profile -->
-    <div class="member-profile">
-      <img src="https://via.placeholder.com/150?text=Noel" alt="Noel" class="member-image">
-      <h4>Noel</h4>
-      <p class="role">Project Specialist</p>
-      <p class="description">Known for joining projects and group games. Brings creativity and enthusiasm.</p>
-      <p class="song"><strong>Defining Song:</strong> "Reach for the Sky" - RAF Red Arrows</p>
-    </div>
-
-    <!-- Alex Profile -->
-    <div class="member-profile">
-      <img src="https://via.placeholder.com/150?text=Alex" alt="Alex" class="member-image">
-      <h4>Alex</h4>
-      <p class="role">Newest Member</p>
-      <p class="description">Newest addition to the Strongest Crickets era. Fresh energy and new perspectives.</p>
-      <p class="song"><strong>Defining Song:</strong> "New Beginnings" - Ólafur Arnalds</p>
-    </div>
-  </div>
-
-  
-  <!-- Member Profiles Section with Links -->
-  <section id="member-profiles-list">
-    <h2>Member Profiles</h2>
-    <p>Click on a member's name to view their full profile page:</p>
-    <div class="member-links-grid">
-      <a href="horace.html" class="member-link">Horace</a>
-      <a href="jayden-ng.html" class="member-link">Jayden Ng</a>
-      <a href="jameson.html" class="member-link">Jameson</a>
-      <a href="jarvis.html" class="member-link">Jarvis</a>
-      <a href="evander.html" class="member-link">Evander</a>
-      <a href="alex.html" class="member-link">Alex</a>
-      <a href="neel.html" class="member-link">Neel</a>
-      <a href="ronny.html" class="member-link">Ronny</a>
-      <a href="scout.html" class="member-link">Scout</a>
-      <a href="colby.html" class="member-link">Colby</a>
-    </div>
-  </section>
-</section>
 </html>
