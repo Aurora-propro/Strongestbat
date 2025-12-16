@@ -62,6 +62,77 @@
       display: flex;
       gap: 0.9rem;
     }
+     .dropdown-btn {
+    background: none;
+    border: none;
+    color: inherit;
+    cursor: pointer;
+    font-size: inherit;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    width: 100%;
+  }
+  .dropdown-btn:hover {
+    color: #38bdf8;
+  }
+  .dropdown-menu {
+    display: none;
+    position: absolute;
+    background: rgba(15, 23, 42, 0.95);
+    border: 1px solid #1f2937;
+    border-radius: 0.5rem;
+    min-width: 300px;
+    list-style: none;
+    margin-top: 0.5rem;
+    max-height: 600px;
+    overflow-y: auto;
+  }
+  .nav-link:has(.dropdown-btn):hover .dropdown-menu {
+    display: block;
+  }
+  .member-item {
+    padding: 1rem;
+    border-bottom: 1px solid #1f2937;
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+  }
+  .member-item:last-child {
+    border-bottom: none;
+  }
+  .member-image {
+    width: 60px;
+    height: 60px;
+    border-radius: 0.5rem;
+    background: #1f2937;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 0.5rem;
+    overflow: hidden;
+  }
+  .member-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  .member-item h4 {
+    font-size: 1rem;
+    color: #f9fafb;
+    margin: 0;
+  }
+  .member-item .role {
+    font-size: 0.85rem;
+    color: #9ca3af;
+    margin: 0;
+  }
+  .member-item .song {
+    font-size: 0.8rem;
+    color: #38bdf8;
+    margin: 0;
+  }
     .nav-link {
       font-size: 0.95rem;
       padding: 0.35rem 0.8rem;
@@ -330,8 +401,70 @@
         <div class="logo-mark">SB</div>
         <ul class="nav-links">
           <li class="nav-link active">Home</li>
-          <li class="nav-link">Member profiles</li>
-          <li class="nav-link">Other</li>
+            <li class="nav-link"><button class="dropdown-btn">Member profiles ▼</button>
+<ul class="dropdown-menu">
+                <li class="member-item">
+                  <div class="member-image"><img src="" alt="Horace" /></div>
+                  <h4>Horace</h4>
+                  <p class="role">Leader and Creator</p>
+                  <p class="song">🎵 "Believer" - Imagine Dragons</p>
+                </li>
+                <li class="member-item">
+                  <div class="member-image"><img src="" alt="Jameson" /></div>
+                  <h4>Jameson</h4>
+                  <p class="role">Assistant Editor</p>
+                  <p class="song">🎵 "Levitating" - Dua Lipa</p>
+                </li>
+                <li class="member-item">
+                  <div class="member-image"><img src="" alt="Scout" /></div>
+                  <h4>Scout</h4>
+                  <p class="role">Active Participant</p>
+                  <p class="song">🎵 "Don't Stop Me Now" - Queen</p>
+                </li>
+                <li class="member-item">
+                  <div class="member-image"><img src="" alt="Ryan" /></div>
+                  <h4>Ryan</h4>
+                  <p class="role">Original Member</p>
+                  <p class="song">🎵 "Take Me Home, Country Roads" - John Denver</p>
+                </li>
+                <li class="member-item">
+                  <div class="member-image"><img src="" alt="Jayden NG" /></div>
+                  <h4>Jayden NG</h4>
+                  <p class="role">Close Friend</p>
+                  <p class="song">🎵 "Walking on Sunshine" - Katrina & The Waves</p>
+                </li>
+                <li class="member-item">
+                  <div class="member-image"><img src="" alt="Colby" /></div>
+                  <h4>Colby</h4>
+                  <p class="role">Chat Enthusiast</p>
+                  <p class="song">🎵 "Good as Hell" - Lizzo</p>
+                </li>
+                <li class="member-item">
+                  <div class="member-image"><img src="" alt="Evander" /></div>
+                  <h4>Evander</h4>
+                  <p class="role">Recording Regular</p>
+                  <p class="song">🎵 "Shut Up and Dance" - Walk the Moon</p>
+                </li>
+                <li class="member-item">
+                  <div class="member-image"><img src="" alt="Jarvis" /></div>
+                  <h4>Jarvis</h4>
+                  <p class="role">Wiki Contributor</p>
+                  <p class="song">🎵 "Wonderful" - Gary Go</p>
+                </li>
+                <li class="member-item">
+                  <div class="member-image"><img src="" alt="Noel" /></div>
+                  <h4>Noel</h4>
+                  <p class="role">Project Specialist</p>
+                  <p class="song">🎵 "Reach for the Sky" - RAF Red Arrows</p>
+                </li>
+                <li class="member-item">
+                  <div class="member-image"><img src="" alt="Alex" /></div>
+                  <h4>Alex</h4>
+                  <p class="role">Newest Member</p>
+                  <p class="song">🎵 "New Beginnings" - Ólafur Arnalds</p>
+                </li>
+              </ul>
+            </li>          <li class="nav-link">Other</li>
         </ul>
       </nav>
       <h1>Strongest Bat Wiki</h1>
