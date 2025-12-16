@@ -4,9 +4,8 @@
   <meta charset="UTF-8" />
   <title>Strongest Bat Wiki</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="Strongest Bat (Currently Strongest Crickets) Wiki – records of 290s and events." />
+  <meta name="description" content="Strongest Bat (Currently Strongest Crickets) Wiki – records of members and events." />
   <style>
-    /* Base reset */
     * { box-sizing: border-box; margin: 0; padding: 0; }
 
     body {
@@ -17,8 +16,7 @@
     }
     a { color: #38bdf8; text-decoration: none; }
     a:hover { text-decoration: underline; }
-
-    .container { max-width: 900px; margin: 0 auto; padding: 1.5rem; }
+    .container { max-width: 1000px; margin: 0 auto; padding: 1.5rem; }
 
     /* Hero + Nav */
     .hero {
@@ -27,18 +25,15 @@
       text-align: center;
       padding: 3.5rem 1.5rem 2.5rem;
       position: relative;
-      z-index: 0;
     }
-
     .top-nav {
       display: flex;
       align-items: center;
       justify-content: space-between;
       margin-bottom: 1.8rem;
       position: relative;
-      z-index: 10; /* ensure above hero content */
+      z-index: 10;
     }
-
     .logo-mark {
       width: 36px; height: 36px; border-radius: 999px; border: 2px solid #38bdf8;
       display: flex; align-items: center; justify-content: center;
@@ -47,9 +42,7 @@
       box-shadow: 0 0 25px rgba(56, 189, 248, 0.45);
       animation: pulse-glow 2.4s ease-in-out infinite;
     }
-
     .nav-links { list-style: none; display: flex; gap: 0.9rem; align-items: center; }
-
     .nav-link {
       position: relative;
       font-size: 0.95rem;
@@ -57,22 +50,19 @@
       border-radius: 999px;
       border: 1px solid transparent;
       color: #cbd5f5;
-      cursor: default;
       opacity: 0.8;
-      transition: background 0.25s ease, border-color 0.25s ease, transform 0.2s ease, opacity 0.25s ease;
+      transition: background .25s, border-color .25s, transform .2s, opacity .25s;
     }
-    .nav-link:hover { background: rgba(15, 23, 42, 0.9); border-color: #1d4ed8; opacity: 1; transform: translateY(-1px); }
-    .nav-link.active { background: #1d4ed8; border-color: #1d4ed8; color: #f9fafb; opacity: 1; }
+    .nav-link:hover { background: rgba(15,23,42,0.9); border-color:#1d4ed8; opacity:1; transform: translateY(-1px); }
+    .nav-link.active { background:#1d4ed8; border-color:#1d4ed8; color:#f9fafb; opacity:1; }
 
     /* Dropdown */
-    .dropdown {
-      position: relative;
-    }
+    .dropdown { position: relative; }
     .dropdown-btn {
-      background: none; border: none; color: inherit; cursor: pointer; font-size: inherit;
-      padding: 0.35rem 0.8rem; display: flex; align-items: center; gap: 0.5rem; border-radius: 999px;
+      background: none; border: none; color: inherit; cursor: pointer;
+      font-size: inherit; padding: 0.35rem 0.8rem; display:flex; align-items:center; gap:.5rem; border-radius:999px;
     }
-    .dropdown-btn:hover { color: #38bdf8; }
+    .dropdown-btn:hover { color:#38bdf8; }
     .dropdown-menu {
       display: none;
       position: absolute;
@@ -81,29 +71,23 @@
       border: 1px solid #1f2937;
       border-radius: 0.6rem;
       min-width: 260px;
-      max-height: 70vh;
-      overflow-y: auto;
-      list-style: none;
-      padding: 0.4rem;
+      max-height: 70vh; overflow-y:auto;
+      list-style: none; padding: 0.4rem;
       box-shadow: 0 14px 36px rgba(0,0,0,0.5);
-      z-index: 9999; /* always on top */
+      z-index: 9999;
     }
     .dropdown.open .dropdown-menu { display: block; }
-
     .dropdown-item {
-      display: block;
-      padding: 0.6rem 0.75rem;
-      color: #e5e7eb;
-      border-radius: 0.45rem;
-      transition: background 0.2s ease, color 0.2s ease;
-      white-space: nowrap;
+      display: block; padding: 0.6rem 0.75rem; color:#e5e7eb; border-radius: 0.45rem; white-space: nowrap;
+      transition: background .2s, color .2s;
     }
-    .dropdown-item:hover { background: #0b1223; color: #fff; text-decoration: none; }
+    .dropdown-item:hover { background:#0b1223; color:#fff; text-decoration:none; }
 
+    /* Hero text */
     .hero h1 { font-size: 2.5rem; letter-spacing: 0.05em; }
     .hero h2 { margin-top: 0.3rem; font-size: 1.1rem; font-weight: 400; color: #9ca3af; }
-    .tagline { margin-top: 1.5rem; font-size: 1.1rem; font-style: italic; color: #e5e7eb; }
-    .quote-author { margin-top: 0.3rem; font-size: 0.9rem; color: #9ca3af; }
+    .tagline { margin-top: 1.5rem; font-size: 1.05rem; font-style: italic; color: #e5e7eb; }
+    .quote-author { margin-top: 0.3rem; font-size: 0.9rem; color:#9ca3af; }
 
     main { margin-top: -1.5rem; padding-bottom: 3rem; }
 
@@ -115,28 +99,39 @@
       margin-top: 1.4rem;
       box-shadow: 0 18px 45px rgba(0, 0, 0, 0.55);
       opacity: 0; transform: translateY(12px);
-      animation: card-in 0.6s ease-out forwards;
+      animation: card-in .6s ease-out forwards;
     }
-    .card:nth-of-type(1) { animation-delay: 0.05s; }
-    .card:nth-of-type(2) { animation-delay: 0.15s; }
-    .card:nth-of-type(3) { animation-delay: 0.25s; }
-    .card:nth-of-type(4) { animation-delay: 0.35s; }
-
+    .card:nth-of-type(1){animation-delay:.05s}
+    .card:nth-of-type(2){animation-delay:.15s}
+    .card:nth-of-type(3){animation-delay:.25s}
+    .card:nth-of-type(4){animation-delay:.35s}
     .card h3 { font-size: 1.3rem; margin-bottom: 0.6rem; color: #f9fafb; }
     .card p { margin-top: 0.3rem; color: #d1d5db; }
+    .meta { font-size: .85rem; color:#9ca3af; }
 
-    .meta { font-size: 0.85rem; color: #9ca3af; }
-
-    .members {
-      list-style: none; margin-top: 0.6rem;
-      display: grid; grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
-      gap: 0.3rem 0.75rem;
+    /* Profiles grid (buttons linking to profile pages) */
+    .profiles-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+      gap: 0.75rem;
+      margin-top: 0.75rem;
     }
-    .members li {
-      padding: 0.25rem 0.4rem;
+    .profile-link {
+      display: block;
       background: #020617;
-      border-radius: 0.4rem;
       border: 1px solid #111827;
+      color: #e5e7eb;
+      padding: 0.75rem 0.9rem;
+      border-radius: 0.55rem;
+      text-align: center;
+      font-weight: 600;
+      transition: transform .15s ease, border-color .2s ease, background .2s ease;
+    }
+    .profile-link:hover {
+      background: #0b1223;
+      border-color: #38bdf8;
+      transform: translateY(-1px);
+      text-decoration: none;
     }
 
     footer {
@@ -150,35 +145,28 @@
 
     /* Animations */
     .hero h1, .hero h2, .hero .tagline, .hero .quote-author {
-      opacity: 0; transform: translateY(10px); animation: hero-fade 0.7s ease-out forwards;
+      opacity: 0; transform: translateY(10px); animation: hero-fade .7s ease-out forwards;
     }
-    .hero h1 { animation-delay: 0.05s; }
-    .hero h2 { animation-delay: 0.16s; }
-    .hero .tagline { animation-delay: 0.27s; }
-    .hero .quote-author { animation-delay: 0.38s; }
-
+    .hero h1 { animation-delay: .05s; }
+    .hero h2 { animation-delay: .16s; }
+    .hero .tagline { animation-delay: .27s; }
+    .hero .quote-author { animation-delay: .38s; }
     @keyframes pulse-glow {
-      0%, 100% { box-shadow: 0 0 18px rgba(56, 189, 248, 0.35); transform: scale(1); }
-      50% { box-shadow: 0 0 30px rgba(56, 189, 248, 0.65); transform: scale(1.04); }
+      0%,100%{box-shadow:0 0 18px rgba(56,189,248,.35); transform:scale(1)}
+      50%{box-shadow:0 0 30px rgba(56,189,248,.65); transform:scale(1.04)}
     }
-    @keyframes card-in {
-      0% { opacity: 0; transform: translateY(14px); }
-      100% { opacity: 1; transform: translateY(0); }
-    }
-    @keyframes hero-fade {
-      0% { opacity: 0; transform: translateY(10px); }
-      100% { opacity: 1; transform: translateY(0); }
-    }
+    @keyframes card-in { 0%{opacity:0;transform:translateY(14px)} 100%{opacity:1;transform:translateY(0)} }
+    @keyframes hero-fade { 0%{opacity:0;transform:translateY(10px)} 100%{opacity:1;transform:translateY(0)} }
 
-    /* Mobile adjustments */
-    @media (max-width: 640px) {
-      .hero { padding: 2.5rem 1.2rem 1.8rem; }
-      .hero h1 { font-size: 2rem; }
-      .card { padding: 1.3rem 1.2rem; }
-      .top-nav { flex-direction: row; justify-content: space-between; gap: 0.8rem; }
-      .nav-links { gap: 0.5rem; }
-      .nav-link { font-size: 0.8rem; padding: 0.25rem 0.6rem; }
-      .dropdown-menu { left: 0; right: auto; min-width: 220px; }
+    /* Mobile tweaks */
+    @media (max-width:640px){
+      .hero{padding:2.5rem 1.2rem 1.8rem}
+      .hero h1{font-size:2rem}
+      .card{padding:1.3rem 1.2rem}
+      .top-nav{flex-direction:row; justify-content:space-between; gap:.8rem}
+      .nav-links{gap:.5rem}
+      .nav-link{font-size:.8rem; padding:.25rem .6rem}
+      .dropdown-menu{left:0; right:auto; min-width:220px;}
     }
   </style>
 </head>
@@ -222,43 +210,57 @@
 
   <main class="container">
     <section class="card">
-      <h3>Current Members – 10 <span class="meta">(as of 18/11/2025)</span></h3>
-      <ul class="members">
-        <li class="member" data-desc="Leader and creator; runs the wiki and recordings.">Horace</li>
-        <li class="member" data-desc="Assistant editor and key member in events.">Jameson</li>
-        <li class="member" data-desc="Often present in calls and important moments.">Scout</li>
-        <li class="member" data-desc="Original member in early Strongest Bat era.">Ryan</li>
-        <li class="member" data-desc="Close friend in the group since 2021.">Jayden Ng</li>
-        <li class="member" data-desc="Active in chats, games, and streams.">Colby</li>
-        <li class="member" data-desc="Frequently appears in recordings and clips.">Evander</li>
-        <li class="member" data-desc="Helps with wiki, ideas, and organization.">Jarvis</li>
-        <li class="member" data-desc="Known for joining projects and group games.">Neel</li>
-        <li class="member" data-desc="Newest member in the Strongest Crickets era. 💩">Alex 💩</li>
-      </ul>
+      <h3>Member Profiles</h3>
+      <p class="meta">Quick access to active member pages.</p>
+      <div class="profiles-grid" aria-label="Member profile links">
+        <a class="profile-link" href="horace.html">Horace</a>
+        <a class="profile-link" href="jayden-ng.html">Jayden Ng</a>
+        <a class="profile-link" href="jameson.html">Jameson</a>
+        <a class="profile-link" href="jarvis.html">Jarvis</a>
+        <a class="profile-link" href="evander.html">Evander</a>
+        <a class="profile-link" href="alex.html">Alex</a>
+        <a class="profile-link" href="neel.html">Neel</a>
+        <a class="profile-link" href="ronny.html">Ronny</a>
+        <a class="profile-link" href="scout.html">Scout</a>
+        <a class="profile-link" href="colby.html">Colby</a>
+      </div>
+    </section>
+
+    <!-- Optional: Jayden snapshot based on provided page -->
+    <section class="card">
+      <h3>Spotlight: Jayden Ng</h3>
+      <p class="meta">Profile excerpt (as provided)</p>
+      <p>
+        “You STUPID, you so DUMB.” – Jayden Ng
+      </p>
+      <p>
+        Original member and former owner of Strongest Bat until the Bingus Empire era. Anime enjoyer,
+        likes PVP games; animates (traced) using Flipaclip; plays Bluelock: Rivals; known for giving out
+        small amounts of Robux; often central in decision‑making. Joined 28/08/2023,
+        invited by Horace. Related to Ryan (cousins). Leader of The Jayden Cult, culprit of The Nigo Prank,
+        hosted The Death Selection and The Death Selection II, and “Cutie Pie Jayden Ng” (Mar 15, 2024).
+      </p>
+      <p class="meta">Source: Member Profiles → Jayden Ng</p>
     </section>
 
     <section class="card">
       <h3>About The Wiki</h3>
       <p>
-        Welcome to the Strongest Bat (Currently Strongest Crickets) Wiki! This site keeps a record
-        of every member added and removed, along with incidents and events since the creation of
-        this friend group.
+        Strongest Bat (Currently Strongest Crickets) Wiki records members, incidents, and events since the group’s creation.
       </p>
       <p>
-        Not every piece of information is listed here. If you have suggestions or things to add,
-        message the wiki editors.
+        Not every piece of information is listed here. If you have suggestions or things to add, message the wiki editors.
       </p>
     </section>
 
     <section class="card">
       <h3>Wiki Editors</h3>
       <p>
-        Horace (Lead), Jameson (Assistant), Jarvis (Assistant assistant),
-        Brendan (Refining), Jayden (Member Cataloging).
+        Horace (Lead), Jameson (Assistant), Jarvis (Assistant assistant), Brendan (Refining), Jayden (Member Cataloging).
       </p>
     </section>
 
-    <section class="card note">
+    <section class="card">
       <p>This website is made for entertainment. Do not take things seriously.</p>
       <p class="meta">Last updated: 20/11/2025 · Version 5.7.5</p>
     </section>
@@ -271,8 +273,8 @@
   </footer>
 
   <script>
-    // Dropdown toggle logic (click to open/close, click outside to close, Esc to close)
-    (function () {
+    // Accessible dropdown behavior
+    (function(){
       const dropdown = document.getElementById('profilesDropdown');
       const btn = dropdown.querySelector('.dropdown-btn');
       const menu = document.getElementById('profilesMenu');
@@ -286,7 +288,7 @@
         btn.setAttribute('aria-expanded', 'false');
       }
       function toggleMenu() {
-        if (dropdown.classList.contains('open')) { closeMenu(); } else { openMenu(); }
+        dropdown.classList.contains('open') ? closeMenu() : openMenu();
       }
 
       btn.addEventListener('click', (e) => {
@@ -295,9 +297,7 @@
       });
 
       document.addEventListener('click', (e) => {
-        if (!dropdown.contains(e.target)) {
-          closeMenu();
-        }
+        if (!dropdown.contains(e.target)) closeMenu();
       });
 
       document.addEventListener('keydown', (e) => {
